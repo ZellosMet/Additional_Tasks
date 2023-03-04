@@ -19,8 +19,8 @@ void main()
 
 	const int SIZE = 10;
 	int array[SIZE] = {};
-	int duplic = 0;
-	int dup = 0;
+	int count_duplic = 0;
+	int duplic_value = 0;
 	bool duplic_check;
 
 	cout << "Сгенерированный массив: \n\n";
@@ -32,31 +32,27 @@ void main()
 
 	for (int i = 0; i < SIZE; i++)
 	{		
-		dup = 0;
-		duplic = 0;
+		duplic_value = count_duplic = 0;
 		duplic_check = false;
 		for (int j = i+1; j < SIZE; j++)
 		{
 			if (array[i] == array[j] && array[i] > 0)
 			{ 
 				duplic_check = true; 
-				dup = array[i]; 
+				duplic_value = array[i];
 				break; 
 			}
 		}
 
 		for (int j = 0; j < SIZE; j++)
 		{
-			if (array[j]==dup)
+			if (array[j]== duplic_value)
 			{
 				array[j] = -array[j];
-				duplic++;
+				count_duplic++;
 			}
 		}
-		if (duplic_check)
-		{
-		cout << "Число " << dup << " повторилось " << duplic << " раз" << endl;
-		}
+		if (duplic_check) cout << "Число " << duplic_value << " повторилось " << count_duplic << " раз" << endl;
 	}
 
 }
