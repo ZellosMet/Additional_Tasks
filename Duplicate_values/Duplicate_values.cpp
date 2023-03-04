@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<ctime>
 #include<conio.h>
 
@@ -18,7 +18,7 @@ void main()
 	int dup = 0;
 	bool duplic_check;
 
-	cout << "Ñãåíåðèðîâàííûé ìàññèâ: \n\n";
+	cout << "Ð¡Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²: \n\n";
 
 	Fill_Array(array, SIZE);
 	Show_Array(array, SIZE);
@@ -50,7 +50,7 @@ void main()
 		}
 		if (duplic_check)
 		{
-		cout << "×èñëî " << dup << " ïîâòîðèëîñü " << duplic << " ðàç" << endl;
+		cout << "Ð§Ð¸ÑÐ»Ð¾ " << dup << " Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ð»Ð¾ÑÑŒ " << duplic << " Ñ€Ð°Ð·" << endl;
 		}
 	}
 
