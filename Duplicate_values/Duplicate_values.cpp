@@ -4,6 +4,11 @@
 
 using namespace std;
 
+/*
+Задание:	Есть массив из 10 элементов. Значения некоторых элементов в этом массиве заведомо повторяются. 
+			Необходимо найти повторяющиеся значения в этом массиве, вывести их на экран, и вывести на экран количество повторений каждого такого значения.
+*/
+
 void Fill_Array(int arr[], int size);
 void Show_Array(int arr[], int size);
 
@@ -23,7 +28,7 @@ void main()
 	Fill_Array(array, SIZE);
 	Show_Array(array, SIZE);
 
-	cout << endl;
+	cout << endl << endl;
 
 	for (int i = 0; i < SIZE; i++)
 	{		
