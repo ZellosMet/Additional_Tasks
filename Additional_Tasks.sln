@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shift", "Shift\Shift.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Duplicate_values", "Duplicate_values\Duplicate_values.vcxproj", "{42145AFD-90AA-4B8F-902D-5F21374B0F56}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Numerics", "Numerics\Numerics.vcxproj", "{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{42145AFD-90AA-4B8F-902D-5F21374B0F56}.Release|x64.Build.0 = Release|x64
 		{42145AFD-90AA-4B8F-902D-5F21374B0F56}.Release|x86.ActiveCfg = Release|Win32
 		{42145AFD-90AA-4B8F-902D-5F21374B0F56}.Release|x86.Build.0 = Release|Win32
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Debug|x64.ActiveCfg = Debug|x64
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Debug|x64.Build.0 = Debug|x64
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Debug|x86.ActiveCfg = Debug|Win32
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Debug|x86.Build.0 = Debug|Win32
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Release|x64.ActiveCfg = Release|x64
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Release|x64.Build.0 = Release|x64
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Release|x86.ActiveCfg = Release|Win32
+		{491520D7-ADB6-4D43-9BB8-F9BFCFEDB43D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
