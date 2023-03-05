@@ -1,6 +1,10 @@
 ﻿#include<iostream>
 using namespace std;
 
+/*
+Задание: В проекте Numerics реализовать перевод десятичного числа в шестнадцатеричную систему счисления (Hexadecimal).
+*/
+
 void main()
 {
 	setlocale(LC_ALL, "ru");
