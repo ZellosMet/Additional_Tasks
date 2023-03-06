@@ -8,8 +8,8 @@ using namespace std;
 			Необходимо найти повторяющиеся значения в этом массиве, вывести их на экран, и вывести на экран количество повторений каждого такого значения.
 */
 
-void Fill_Array(int arr[], int size);
-void Show_Array(int arr[], int size);
+void Fill_Array(int arr[], int size); //Функция заполнения массива
+void Show_Array(int arr[], int size); //Функция вывода массива
 
 void main()
 {
@@ -29,11 +29,11 @@ void main()
 
 	cout << endl << endl;
 
-	for (int i = 0; i < SIZE; i++)
+	for (int i = 0; i < SIZE; i++) 
 	{		
 		duplic_value = count_duplic = 0;
 		duplic_check = false;
-		for (int j = i+1; j < SIZE; j++)
+		for (int j = i+1; j < SIZE; j++) //Цикл проверки элемента массива на повторение
 		{
 			if (array[i] == array[j] && array[i] > 0)
 			{ 
@@ -43,7 +43,7 @@ void main()
 			}
 		}
 
-		for (int j = 0; j < SIZE; j++)
+		for (int j = 0; j < SIZE; j++) // Цикл вывода повторяющихся значений
 		{
 			if (array[j]== duplic_value)
 			{
