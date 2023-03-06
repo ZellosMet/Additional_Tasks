@@ -1,16 +1,16 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<ctime>
 using namespace std;
 
 /*
-Задание:	В проекте 2D реализовать алгоритм умножения матриц.
-			Найти определитель матрицы третьего порядка используя алгоритм Саррюса;
+Р—Р°РґР°РЅРёРµ:	Р’ РїСЂРѕРµРєС‚Рµ 2D СЂРµР°Р»РёР·РѕРІР°С‚СЊ Р°Р»РіРѕСЂРёС‚Рј СѓРјРЅРѕР¶РµРЅРёСЏ РјР°С‚СЂРёС†.
+			РќР°Р№С‚Рё РѕРїСЂРµРґРµР»РёС‚РµР»СЊ РјР°С‚СЂРёС†С‹ С‚СЂРµС‚СЊРµРіРѕ РїРѕСЂСЏРґРєР° РёСЃРїРѕР»СЊР·СѓСЏ Р°Р»РіРѕСЂРёС‚Рј РЎР°СЂСЂСЋСЃР°;
 */
 
-void Fill_Matrix(int arr[][3], int row, int col); //Функция заполнения матрицы
-void Show_Matrix(int arr[][3], int row, int col); // Функция вывода матрицы
-void Multip_Matrix(int f_arr[][3], int s_arr[][3], int m_arr[][3], int row, int col); // Функция перемножения матриц
-void Move_Matrix(int arr[][3], int row, int col); //Функция циклического смещения элементов матрицы
+void Fill_Matrix(int arr[][3], int row, int col); //Р¤СѓРЅРєС†РёСЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°С‚СЂРёС†С‹
+void Show_Matrix(int arr[][3], int row, int col); // Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РјР°С‚СЂРёС†С‹
+void Multip_Matrix(int f_arr[][3], int s_arr[][3], int m_arr[][3], int row, int col); // Р¤СѓРЅРєС†РёСЏ РїРµСЂРµРјРЅРѕР¶РµРЅРёСЏ РјР°С‚СЂРёС†
+void Move_Matrix(int arr[][3], int row, int col); //Р¤СѓРЅРєС†РёСЏ С†РёРєР»РёС‡РµСЃРєРѕРіРѕ СЃРјРµС‰РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РјР°С‚СЂРёС†С‹
 
 void main()
 {
@@ -19,26 +19,26 @@ void main()
 
 	const int ROW = 3;
 	const int COL = 3;
-	int multip_element = 1; //Переменная произведения элементов
-	long long det = 0; //Детерминант матрици
+	int multip_element = 1; //РџРµСЂРµРјРµРЅРЅР°СЏ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ
+	long long det = 0; //Р”РµС‚РµСЂРјРёРЅР°РЅС‚ РјР°С‚СЂРёС†Рё
 
 	int first_matrix[ROW][COL] = {};
 	int second_matrix[ROW][COL] = {};
 	int multip_matrix[ROW][COL] = {};
 
-	cout << "Сгенерированный первый массив" << endl;
+	cout << "РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РїРµСЂРІС‹Р№ РјР°СЃСЃРёРІ" << endl;
 	Fill_Matrix(first_matrix, ROW, COL);
 	Show_Matrix(first_matrix, ROW, COL);
 
-	cout << "\nСгенерированный второй массив" << endl;
+	cout << "\nРЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РІС‚РѕСЂРѕР№ РјР°СЃСЃРёРІ" << endl;
 	Fill_Matrix(second_matrix, ROW, COL);
 	Show_Matrix(second_matrix, ROW, COL);
 
-	cout << "\nПроизведение массивов" << endl;
+	cout << "\nРџСЂРѕРёР·РІРµРґРµРЅРёРµ РјР°СЃСЃРёРІРѕРІ" << endl;
 	Multip_Matrix(first_matrix, second_matrix, multip_matrix, ROW, COL);
 	Show_Matrix(multip_matrix, ROW, COL);
 
-	for (int i = 0; i < COL; i++) //Циклы нахождения детерминанта методом Саррюса
+	for (int i = 0; i < COL; i++) //Р¦РёРєР»С‹ РЅР°С…РѕР¶РґРµРЅРёСЏ РґРµС‚РµСЂРјРёРЅР°РЅС‚Р° РјРµС‚РѕРґРѕРј РЎР°СЂСЂСЋСЃР°
 	{
 		for (int i = 0, j = 0; i < COL; i++, j++)
 		{
@@ -60,7 +60,7 @@ void main()
 		Move_Matrix(multip_matrix, ROW, COL);
 	}
 
-	cout << endl << "Детерминант произведения матрицы = " << det << endl;
+	cout << endl << "Р”РµС‚РµСЂРјРёРЅР°РЅС‚ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ РјР°С‚СЂРёС†С‹ = " << det << endl;
 
 }
 
