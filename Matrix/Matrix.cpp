@@ -8,8 +8,9 @@ using namespace std;
 			вывести их на экран, и вывести на экран количество их повторений;
 */
 
-void Fill_Matrix(int arr[][5], int row, int col); //Функция заполнения матрицы
-void Show_Matrix(int arr[][5], int row, int col); // Функция вывода матрицы
+void Fill_Matrix(int arr[][5], int size); //Функция заполнения матрицы
+void Unique_Fill_Matrix(int arr[][5], int size); //Функция заполнения матрицы уникальными значениями
+void Show_Matrix(int arr[][5], int size); // Функция вывода матрицы
 
 void main()
 {
@@ -21,9 +22,11 @@ void main()
 	int duplic_value, count_duplic, tmp, i, j;
 	bool end = true, duplic_check = true;
 
-	cout << "Сгенерированный массив\n";
-	Fill_Matrix(matrix, SIZE, SIZE);
-	Show_Matrix(matrix, SIZE, SIZE);
+	Unique_Fill_Matrix(matrix, SIZE);
+
+	cout << "\nСгенерированный массив\n";
+	Fill_Matrix(matrix, SIZE);
+	Show_Matrix(matrix, SIZE);
 
 	cout << endl;
 
@@ -49,7 +52,7 @@ void main()
 	}
 
 	cout << "Отсортированный массив\n";
-	Show_Matrix(matrix, SIZE, SIZE);
+	Show_Matrix(matrix, SIZE);
 	cout << endl;
 
 	for (int i = 0; i < SIZE + SIZE; i++)
@@ -89,22 +92,47 @@ void main()
 	}
 }
 
-void Fill_Matrix(int arr[][5], int row, int col)
+void Fill_Matrix(int arr[][5], int size)
 {
-	for (int i = 0; i < row; i++)
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < col; j++)
+		for (int j = 0; j < size; j++)
 		{
 			arr[i][j] = rand() % 9 + 1;
 		}
 	}
 }
 
-void Show_Matrix(int arr[][5], int row, int col)
+void Unique_Fill_Matrix(int arr[][5], int size)
 {
-	for (int i = 0; i < row; i++)
+	int rnd;
+	bool check;
+	for (int i = 0; i < size*size; )
 	{
-		for (int j = 0; j < col; j++)
+			check = true;
+			rnd = rand() % 50;
+		for (int n = 0; n < size; n++)
+		{
+			for (int m = 0; m < size; )
+			{
+				if (arr[n][m] == rnd)
+				check = false;
+				if (check)
+				{
+					arr[n][m] = rnd;
+					m++;
+				}
+
+			}
+		}
+	}
+}
+
+void Show_Matrix(int arr[][5], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
 		{
 			cout << "[ " << arr[i][j] << " ] ";
 		}

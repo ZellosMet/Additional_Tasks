@@ -73,10 +73,10 @@ void Fill_Array(int arr[], int size)
 	bool check;
 	for (int i = 0; i < size; )
 	{
-		check = false;
+		check = true;
 		rnd = rand() % 20;
-		for (int j = 0; j < size; j++) if (arr[j] == rnd) check = true;
-		if (!check)
+		for (int j = 0; j < size; j++) if (arr[j] == rnd) check = false;
+		if (check)
 		{
 			arr[i] = rnd;
 			i++;
