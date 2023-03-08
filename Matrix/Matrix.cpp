@@ -3,7 +3,8 @@
 using namespace std;
 
 /*
-Задание:	Двумерный массив заполнить случайными числами и отсортировать в порядке возрастания;
+Задание:	Двумерный массив заполнить уникальными случайными числами.
+			Двумерный массив заполнить случайными числами и отсортировать в порядке возрастания;
 			Есть двумерный массив, заполненный заведомо повторяющимися случайными числами. Необходимо найти в этом массиве повторяющиеся элементы, 
 			вывести их на экран, и вывести на экран количество их повторений;
 */
@@ -11,6 +12,7 @@ using namespace std;
 void Fill_Matrix(int arr[][5], int size); //Функция заполнения матрицы
 void Unique_Fill_Matrix(int arr[][5], int size); //Функция заполнения матрицы уникальными значениями
 void Show_Matrix(int arr[][5], int size); // Функция вывода матрицы
+void Sort_Matrix(int arr[][5], int size);
 
 void main()
 {
@@ -19,39 +21,23 @@ void main()
 
 	const int SIZE = 5;
 	int matrix[SIZE][SIZE] = {};
-	int duplic_value, count_duplic, tmp, i, j;
-	bool end = true, duplic_check = true;
+	int duplic_value, count_duplic;
+	bool duplic_check = true;
 
+	cout << "Сгенерированный массив уникальных значений\n";
 	Unique_Fill_Matrix(matrix, SIZE);
+	Show_Matrix(matrix, SIZE);
+
+	cout << "\nОтсортированный массив уникальных значени\n";
+
+	Sort_Matrix(matrix, SIZE);
+	Show_Matrix(matrix, SIZE);
 
 	cout << "\nСгенерированный массив\n";
 	Fill_Matrix(matrix, SIZE);
 	Show_Matrix(matrix, SIZE);
 
-	cout << endl;
-
-	while (end) //Цикл сортировки пузыриком
-	{
-		end = false;
-		i = 0; j = 0;
-		for (int n = 0; n < SIZE; n++)
-		{
-			for (int m = (n ? 0 : 1); m < SIZE; m++)
-			{
-				if (matrix[i][j] > matrix[n][m]) 
-				{
-					tmp = matrix[i][j];
-					matrix[i][j] = matrix[n][m];
-					matrix[n][m] = tmp;
-					end = true;
-				}
-				i = n;
-				j = m;
-			}
-		}
-	}
-
-	cout << "Отсортированный массив\n";
+	cout << "\nОтсортированный массив\n";
 	Show_Matrix(matrix, SIZE);
 	cout << endl;
 
@@ -98,7 +84,7 @@ void Fill_Matrix(int arr[][5], int size)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			arr[i][j] = rand() % 9 + 1;
+			arr[i][j] = rand() % 9 + 1 ;
 		}
 	}
 }
@@ -106,23 +92,24 @@ void Fill_Matrix(int arr[][5], int size)
 void Unique_Fill_Matrix(int arr[][5], int size)
 {
 	int rnd;
-	bool check;
-	for (int i = 0; i < size*size; )
+	bool check = true;
+	for (int n = 0; n < size; n++)
 	{
-			check = true;
-			rnd = rand() % 50;
-		for (int n = 0; n < size; n++)
+		for (int m = 0; m < size; )
 		{
-			for (int m = 0; m < size; )
+			check = true;
+			rnd = rand() % 30;
+			for (int x = 0; x < size; x++)
 			{
-				if (arr[n][m] == rnd)
-				check = false;
-				if (check)
+				for (int y = 0; y < size; y++)
 				{
-					arr[n][m] = rnd;
-					m++;
+					if (arr[x][y] == rnd)check = false;
 				}
-
+			}
+			if (check)
+			{
+				arr[n][m] = rnd;
+				m++;
 			}
 		}
 	}
@@ -137,5 +124,31 @@ void Show_Matrix(int arr[][5], int size)
 			cout << "[ " << arr[i][j] << " ] ";
 		}
 		cout << endl;
+	}
+}
+
+void Sort_Matrix(int arr[][5], int size)
+{
+	int tmp, i, j;
+	bool end = true;
+	while (end)
+	{
+		end = false;
+		i = 0; j = 0;
+		for (int n = 0; n < size; n++)
+		{
+			for (int m = (n ? 0 : 1); m < size; m++)
+			{
+				if (arr[i][j] > arr[n][m])
+				{
+					tmp = arr[i][j];
+					arr[i][j] = arr[n][m];
+					arr[n][m] = tmp;
+					end = true;
+				}
+				i = n;
+				j = m;
+			}
+		}
 	}
 }
