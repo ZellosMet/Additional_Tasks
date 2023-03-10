@@ -24,7 +24,7 @@ enum STEP
 
 void Fill_Array(int arr[], int size); //Функция заполнения массива уникальными значениями
 void Show_Array(int arr[], int size); //Функция вывода массива
-void Shift_Array(int arr[], int size, int shift, int step); //Функция сдвига элементов массива массивом(право/лево)
+void Shift_Array(int arr[], int size, int shift, int step); //Функция сдвига элементов массива(право/лево)
 
 
 void main()
