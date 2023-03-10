@@ -1,20 +1,20 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<ctime>
 #include<conio.h>
 using namespace std;
 
 /*
-Задание:	Написать перегруженные функции для работы с одномерными
-			типа int, float, double и char:
-			??? Sum(???);	//ВОЗВРАЩАЕТ сумму элементов массива
-			??? Avg(???);	//ВОЗВРАЩАЕТ среднее-арифметическое элементов массива
-			??? minValueIn(???);	//ВОЗВРАЩАЕТ минимальное значение из массива
-			??? maxValueIn(???);	//ВОЗВРАЩАЕТ максимальное значение из массива
-			??? shiftLeft(???);		//циклически сдвигает массив на заданное число элементов влево
-			??? shiftRight(???);	//циклически сдвигает массив на заданное число элементов вправо
+Р—Р°РґР°РЅРёРµ:	РќР°РїРёСЃР°С‚СЊ РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕРґРЅРѕРјРµСЂРЅС‹РјРё
+			С‚РёРїР° int, float, double Рё char:
+			??? Sum(???);	//Р’РћР—Р’Р РђР©РђР•Рў СЃСѓРјРјСѓ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
+			??? Avg(???);	//Р’РћР—Р’Р РђР©РђР•Рў СЃСЂРµРґРЅРµРµ-Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
+			??? minValueIn(???);	//Р’РћР—Р’Р РђР©РђР•Рў РјРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РёР· РјР°СЃСЃРёРІР°
+			??? maxValueIn(???);	//Р’РћР—Р’Р РђР©РђР•Рў РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РёР· РјР°СЃСЃРёРІР°
+			??? shiftLeft(???);		//С†РёРєР»РёС‡РµСЃРєРё СЃРґРІРёРіР°РµС‚ РјР°СЃСЃРёРІ РЅР° Р·Р°РґР°РЅРЅРѕРµ С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ РІР»РµРІРѕ
+			??? shiftRight(???);	//С†РёРєР»РёС‡РµСЃРєРё СЃРґРІРёРіР°РµС‚ РјР°СЃСЃРёРІ РЅР° Р·Р°РґР°РЅРЅРѕРµ С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ РІРїСЂР°РІРѕ
 */
 
-#define MOVE_LEFT 75  //Задание переменных для отлова с клавиатуры
+#define MOVE_LEFT 75  //Р—Р°РґР°РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С… РґР»СЏ РѕС‚Р»РѕРІР° СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
 #define MOVE_RIGHT 77
 #define ESC 27
 
@@ -27,7 +27,7 @@ enum STEP
 	Five
 };
 
-//Список перегрузок функций
+//РЎРїРёСЃРѕРє РїРµСЂРµРіСЂСѓР·РѕРє С„СѓРЅРєС†РёР№
 void Fill_Array(int arr[], int size);
 void Fill_Array(float arr[], int size);
 
@@ -65,26 +65,26 @@ void main()
 	Show_Array(f_array, SIZE);
 	Show_Array(i_array, SIZE);
 
-	cout << "Среднее арифметическое целочисленного массива " << Array_Sum(i_array, SIZE) / SIZE << endl;
-	cout << "Сумма вещественного массива " << Array_Sum(f_array, SIZE) << endl;
-	cout << "Минимальное целочисленного массива " << Array_Min(i_array, SIZE) << endl;
-	cout << "Максимальное вещественного массива " << Array_Max(f_array, SIZE) << endl << endl;
+	cout << "РЎСЂРµРґРЅРµРµ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ С†РµР»РѕС‡РёСЃР»РµРЅРЅРѕРіРѕ РјР°СЃСЃРёРІР° " << Array_Sum(i_array, SIZE) / SIZE << endl;
+	cout << "РЎСѓРјРјР° РІРµС‰РµСЃС‚РІРµРЅРЅРѕРіРѕ РјР°СЃСЃРёРІР° " << Array_Sum(f_array, SIZE) << endl;
+	cout << "РњРёРЅРёРјР°Р»СЊРЅРѕРµ С†РµР»РѕС‡РёСЃР»РµРЅРЅРѕРіРѕ РјР°СЃСЃРёРІР° " << Array_Min(i_array, SIZE) << endl;
+	cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РІРµС‰РµСЃС‚РІРµРЅРЅРѕРіРѕ РјР°СЃСЃРёРІР° " << Array_Max(f_array, SIZE) << endl << endl;
 
 	Show_Array(f_array, SIZE);
 
-	do //Цикл отлова событий
+	do //Р¦РёРєР» РѕС‚Р»РѕРІР° СЃРѕР±С‹С‚РёР№
 	{
 		control = _getch();
 		switch (control)
 		{
-		case One: step = 1; cout << "Установлен шаг 1\n\n"; break;
-		case Two: step = 2; cout << "Установлен шаг 2\n\n"; break;
-		case Three: step = 3; cout << "Установлен шаг 3\n\n"; break;
-		case Four: step = 4; cout << "Установлен шаг 4\n\n"; break;
-		case Five: step = 5; cout << "Установлен шаг 5\n\n"; break;
-		case MOVE_LEFT: shift = MOVE_LEFT; cout << "Сдвиг на лево с шагом: " << step << endl;
+		case One: step = 1; cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ С€Р°Рі 1\n\n"; break;
+		case Two: step = 2; cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ С€Р°Рі 2\n\n"; break;
+		case Three: step = 3; cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ С€Р°Рі 3\n\n"; break;
+		case Four: step = 4; cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ С€Р°Рі 4\n\n"; break;
+		case Five: step = 5; cout << "РЈСЃС‚Р°РЅРѕРІР»РµРЅ С€Р°Рі 5\n\n"; break;
+		case MOVE_LEFT: shift = MOVE_LEFT; cout << "РЎРґРІРёРі РЅР° Р»РµРІРѕ СЃ С€Р°РіРѕРј: " << step << endl;
 			Shift_Array(f_array, SIZE, shift, step); Show_Array(f_array, SIZE); cout << endl; break;
-		case MOVE_RIGHT: shift = MOVE_RIGHT; cout << "Сдвиг на право с шагом: " << step << endl;
+		case MOVE_RIGHT: shift = MOVE_RIGHT; cout << "РЎРґРІРёРі РЅР° РїСЂР°РІРѕ СЃ С€Р°РіРѕРј: " << step << endl;
 			Shift_Array(f_array, SIZE, shift, step); Show_Array(f_array, SIZE); cout << endl; break;
 		}
 	} while (control != ESC);
@@ -132,14 +132,14 @@ void Fill_Array(float arr[], int size)
 void Show_Array(int arr[], int size)
 {
 
-	cout << "Вызвалась функция заполнения массива целыми значениями\n";
+	cout << "Р’С‹Р·РІР°Р»Р°СЃСЊ С„СѓРЅРєС†РёСЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР° С†РµР»С‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё\n";
 	for (int i = 0; i < size; i++) cout << "[ " << arr[i] << " ] ";
 	cout << endl << endl;
 }
 
 void Show_Array(float arr[], int size)
 {
-	cout << "Вызвалась функция заполнения массива вещественными значениями\n\n";
+	cout << "Р’С‹Р·РІР°Р»Р°СЃСЊ С„СѓРЅРєС†РёСЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР° РІРµС‰РµСЃС‚РІРµРЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё\n\n";
 	for (int i = 0; i < size; i++) cout << "[ " << arr[i] << " ] ";
 	cout << endl << endl;
 }
