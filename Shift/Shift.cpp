@@ -24,7 +24,8 @@ enum STEP
 
 void Fill_Array(int arr[], int size); //Функция заполнения массива уникальными значениями
 void Show_Array(int arr[], int size); //Функция вывода массива
-void Shift_Array(int arr[], int size, int shift, int step); //Функция сдвига элементов массива(право/лево)
+void Shift_Left_Array(int arr[], int size, int step); //Функция сдвига элементов массива влево
+void Shift_Right_Array(int arr[], int size, int step); //Функция сдвига элементов массива вправо
 
 
 void main()
@@ -57,10 +58,10 @@ void main()
 		case Three: step = 3; cout << "Установлен шаг 3\n\n"; break;
 		case Four: step = 4; cout << "Установлен шаг 4\n\n"; break;
 		case Five: step = 5; cout << "Установлен шаг 5\n\n"; break;
-		case MOVE_LEFT: shift = MOVE_LEFT; cout << "Сдвиг на лево с шагом: " << step << endl;
-			Shift_Array(array, SIZE, shift, step); Show_Array(array, SIZE); cout << endl << endl; break;
-		case MOVE_RIGHT: shift = MOVE_RIGHT; cout << "Сдвиг на право с шагом: " << step << endl;
-			Shift_Array(array, SIZE, shift, step); Show_Array(array, SIZE); cout << endl << endl; break;
+		case MOVE_LEFT: cout << "Сдвиг на лево с шагом: " << step << endl;
+			Shift_Left_Array(array, SIZE, step); Show_Array(array, SIZE); cout << endl << endl; break;
+		case MOVE_RIGHT: cout << "Сдвиг на право с шагом: " << step << endl;
+			Shift_Right_Array(array, SIZE, step); Show_Array(array, SIZE); cout << endl << endl; break;
 		}
 	} while (control != ESC);
 
@@ -88,25 +89,23 @@ void Show_Array(int arr[], int size)
 	for (int i = 0; i < size; i++) cout << "[ " << arr[i] << " ] ";
 }
 
-void Shift_Array(int arr[], int size, int shift, int step)
+void Shift_Left_Array(int arr[], int size, int step)
 {
 	int tmp = 0;
-	if (shift == MOVE_LEFT)
+	for (int i = 0; i < step; i++)
 	{
-		for (int i = 0; i < step; i++)
-		{
-			tmp = arr[0];
-			for (int j = 0; j < size; j++) arr[j] = arr[j + 1];
-			arr[size - 1] = tmp;
-		}
+		tmp = arr[0];
+		for (int j = 0; j < size; j++) arr[j] = arr[j + 1];
+		arr[size - 1] = tmp;
 	}
-	else
+}
+void Shift_Right_Array(int arr[], int size, int step)
+{
+	int tmp = 0;
+	for (int i = 0; i < step; i++)
 	{
-		for (int i = 0; i < step; i++)
-		{
-			tmp = arr[size - 1];
-			for (int j = size - 1; j >= 0; j--) arr[j] = arr[j - 1];
-			arr[0] = tmp;
-		}
+		tmp = arr[size - 1];
+		for (int j = size - 1; j >= 0; j--) arr[j] = arr[j - 1];
+		arr[0] = tmp;
 	}
 }
