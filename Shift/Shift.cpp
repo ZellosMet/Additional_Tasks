@@ -23,7 +23,7 @@ enum STEP
 };
 
 void Fill_Array(int arr[], int size); //Функция заполнения массива уникальными значениями
-void Show_Array(int arr[], int size); //Функция вывода массива
+void Show_Array(int arr[], int size, int target); //Функция вывода массива
 void Shift_Left_Array(int arr[], int size, int step); //Функция сдвига элементов массива влево
 void Shift_Right_Array(int arr[], int size, int step); //Функция сдвига элементов массива вправо
 
@@ -36,16 +36,19 @@ void main()
 	int control;
 	int step = 1;
 	int shift = 0;
+	int target = 0;
 	const int SIZE = 10;
 	int array[SIZE] = {};
 
 	cout << "Управление:\nШаг задаётся нажатием на цифру от 1 до 5(поумолчанию 1)\n";
 	cout << "Стрелочками выбирается направление смещения\n"; 
-	cout << "ESC - Выход\n\n";
+	cout << "ESC - Выход\n";
+	cout << "В || находится целевой элемент для отслеживания перемещения\n\n";
 	cout << "Сгенерированный массив: \n\n";
 
 	Fill_Array(array, SIZE);
-	Show_Array(array, SIZE);
+	target = array[4];
+	Show_Array(array, SIZE, target);
 	cout << endl << endl;
 
 	do //Цикл отлова событий
@@ -59,9 +62,9 @@ void main()
 		case Four: step = 4; cout << "Установлен шаг 4\n\n"; break;
 		case Five: step = 5; cout << "Установлен шаг 5\n\n"; break;
 		case MOVE_LEFT: cout << "Сдвиг на лево с шагом: " << step << endl;
-			Shift_Left_Array(array, SIZE, step); Show_Array(array, SIZE); cout << endl << endl; break;
+			Shift_Left_Array(array, SIZE, step); Show_Array(array, SIZE, target); cout << endl << endl; break;
 		case MOVE_RIGHT: cout << "Сдвиг на право с шагом: " << step << endl;
-			Shift_Right_Array(array, SIZE, step); Show_Array(array, SIZE); cout << endl << endl; break;
+			Shift_Right_Array(array, SIZE, step); Show_Array(array, SIZE, target); cout << endl << endl; break;
 		}
 	} while (control != ESC);
 
@@ -84,9 +87,19 @@ void Fill_Array(int arr[], int size)
 	}
 }
 
-void Show_Array(int arr[], int size)
+void Show_Array(int arr[], int size, int target)
 {
-	for (int i = 0; i < size; i++) cout << "[ " << arr[i] << " ] ";
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i]==target)
+		{
+			cout << "| " << arr[i] << " | ";		
+		}
+		else
+		{
+			cout << "< " << arr[i] << " > ";
+		}
+	}
 }
 
 void Shift_Left_Array(int arr[], int size, int step)
