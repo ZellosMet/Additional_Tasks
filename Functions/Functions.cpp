@@ -14,6 +14,8 @@ using namespace std;
 			??? shiftRight(???);	//циклически сдвигает массив на заданное число элементов вправо
 */
 
+
+
 #define MOVE_LEFT 75  //Задание переменных для отлова с клавиатуры
 #define MOVE_RIGHT 77
 #define ESC 27
@@ -27,50 +29,36 @@ enum STEP
 	Five
 };
 
-//Список перегрузок функций
-void Fill_Array(int arr[], int size);
-void Fill_Array(float arr[], int size);
+//Список шаблонных функций
 
-void Show_Array(int arr[], int size);
-void Show_Array(float arr[], int size);
-
-double Array_Sum(int arr[], int size);
-double Array_Sum(float arr[], int size);
-
-int Array_Max(int arr[], int size);
-float Array_Max(float arr[], int size);
-
-int Array_Min(int arr[], int size);
-float Array_Min(float arr[], int size);
-
-void Shift_Array(int arr[], int size, int shift, int step);
-void Shift_Array(float arr[], int size, int shift, int step);
-
+template<typename T1, typename T2> void Fill_Array(T1 arr[], T2 size);
+template<typename T1, typename T2, typename T3> void Show_Array(T1 arr[], T2 size, T3 target);
+template<typename T1, typename T2> T1 Array_Sum(T1 arr[], T2 size);
+template<typename T1, typename T2> T1 Array_Max(T1 arr[], T2 size);
+template<typename T1, typename T2> T1 Array_Min(T1 arr[], T2 size);
+template<typename T1, typename T2, typename T3> void Shift_Left_Array(T1 arr[], T2 size, T3 step);
+template<typename T1, typename T2, typename T3> void Shift_Right_Array(T1 arr[], T2 size, T3 step);
 
 void main()
 {
 	srand(time(NULL));
 	setlocale(LC_ALL, "ru");
 
-	int control;
-	int step = 1;
-	int shift = 0;
+	int control, step = 1;
+	float target;
 	const int SIZE = 10;
-	int i_array[SIZE] = {};
-	float f_array[SIZE] = {};
+	float array[SIZE] = {};
 
-	Fill_Array(i_array, SIZE);
-	Fill_Array(f_array, SIZE);
+	cout << "Сгенерированный массив: " << endl;
 
-	Show_Array(f_array, SIZE);
-	Show_Array(i_array, SIZE);
+	Fill_Array(array, SIZE);
+	target = array[5];
+	Show_Array(array, SIZE, target);
 
-	cout << "Среднее арифметическое целочисленного массива " << Array_Sum(i_array, SIZE) / SIZE << endl;
-	cout << "Сумма вещественного массива " << Array_Sum(f_array, SIZE) << endl;
-	cout << "Минимальное целочисленного массива " << Array_Min(i_array, SIZE) << endl;
-	cout << "Максимальное вещественного массива " << Array_Max(f_array, SIZE) << endl << endl;
-
-	Show_Array(f_array, SIZE);
+	cout << "\n\nСреднее арифметическое целочисленного массива " << Array_Sum(array, SIZE) / SIZE << endl;
+	cout << "Сумма вещественного массива " << Array_Sum(array, SIZE) << endl;
+	cout << "Минимальное целочисленного массива " << Array_Min(array, SIZE) << endl;
+	cout << "Максимальное вещественного массива " << Array_Max(array, SIZE) << endl << endl;
 
 	do //Цикл отлова событий
 	{
@@ -82,147 +70,88 @@ void main()
 		case Three: step = 3; cout << "Установлен шаг 3\n\n"; break;
 		case Four: step = 4; cout << "Установлен шаг 4\n\n"; break;
 		case Five: step = 5; cout << "Установлен шаг 5\n\n"; break;
-		case MOVE_LEFT: shift = MOVE_LEFT; cout << "Сдвиг на лево с шагом: " << step << endl;
-			Shift_Array(f_array, SIZE, shift, step); Show_Array(f_array, SIZE); cout << endl; break;
-		case MOVE_RIGHT: shift = MOVE_RIGHT; cout << "Сдвиг на право с шагом: " << step << endl;
-			Shift_Array(f_array, SIZE, shift, step); Show_Array(f_array, SIZE); cout << endl; break;
+		case MOVE_LEFT: cout << "Сдвиг на лево с шагом: " << step << endl;
+			Shift_Left_Array(array, SIZE, step); Show_Array(array, SIZE, target); cout << endl << endl; break;
+		case MOVE_RIGHT: cout << "Сдвиг на право с шагом: " << step << endl;
+			Shift_Right_Array(array, SIZE, step); Show_Array(array, SIZE, target); cout << endl << endl; break;
 		}
 	} while (control != ESC);
 
 	
 }
 
-void Fill_Array(int arr[], int size)
+template<typename T1, typename T2> void Fill_Array(T1 arr[], T2 size)
 {
-	int rnd;
+	int rnd_i;
+	float rnd_f;
 	bool check;
 	for (int i = 0; i < size; )
 	{
 		check = true;
-		rnd = rand() % 20;
-		for (int j = 0; j < size; j++) if (arr[j] == rnd) check = false;
+		rnd_i = rand() % 9;
+		rnd_f = (float)(rand() % 99 + 1)/100;
+		rnd_f += rnd_i;
+		for (int j = 0; j < size; j++) if (arr[j] == rnd_f) check = false;
 		if (check)
 		{
-			arr[i] = rnd;
+			arr[i] = rnd_f;
 			i++;
 		}
 	}
 }
 
-void Fill_Array(float arr[], int size)
+template<typename T1, typename T2, typename T3> void Show_Array(T1 arr[], T2 size, T3 target)
 {
-	int i_rnd;
-	float f_rnd;
-	bool check;
-	for (int i = 0; i < size; )
+	for (int i = 0; i < size; i++)
 	{
-		check = true;
-		i_rnd = (rand() % 9 + 1);
-		f_rnd = (rand() % 9 + 2);
-		f_rnd /= i_rnd;
-		for (int j = 0; j < size; j++) if (arr[j] == f_rnd) check = false;
-		if (check)
+		if (arr[i] == target)
 		{
-			arr[i] = f_rnd;
-			i++;
+			cout << "| " << arr[i] << " | ";
+		}
+		else
+		{
+			cout << "< " << arr[i] << " > ";
 		}
 	}
 }
 
-void Show_Array(int arr[], int size)
-{
-
-	cout << "Вызвалась функция заполнения массива целыми значениями\n";
-	for (int i = 0; i < size; i++) cout << "[ " << arr[i] << " ] ";
-	cout << endl << endl;
-}
-
-void Show_Array(float arr[], int size)
-{
-	cout << "Вызвалась функция заполнения массива вещественными значениями\n\n";
-	for (int i = 0; i < size; i++) cout << "[ " << arr[i] << " ] ";
-	cout << endl << endl;
-}
-
-void Shift_Array(float arr[], int size, int shift, int step)
+template<typename T1, typename T2, typename T3> void Shift_Left_Array(T1 arr[], T2 size, T3 step)
 {
 	float tmp = 0;
-	if (shift == MOVE_LEFT)
+	for (int i = 0; i < step; i++)
 	{
-		for (int i = 0; i < step; i++)
-		{
-			tmp = arr[0];
-			for (int j = 0; j < size; j++) arr[j] = arr[j + 1];
-			arr[size - 1] = tmp;
-		}
-	}
-	else
-	{
-		for (int i = 0; i < step; i++)
-		{
-			tmp = arr[size - 1];
-			for (int j = size - 1; j >= 0; j--) arr[j] = arr[j - 1];
-			arr[0] = tmp;
-		}
+		tmp = arr[0];
+		for (int j = 0; j < size; j++) arr[j] = arr[j + 1];
+		arr[size - 1] = tmp;
 	}
 }
 
-void Shift_Array(int arr[], int size, int shift, int step)
+template<typename T1, typename T2, typename T3> void Shift_Right_Array(T1 arr[], T2 size, T3 step)
 {
-	int tmp = 0;
-	if (shift == MOVE_LEFT)
+	float tmp = 0;
+	for (int i = 0; i < step; i++)
 	{
-		for (int i = 0; i < step; i++)
-		{
-			tmp = arr[0];
-			for (int j = 0; j < size; j++) arr[j] = arr[j + 1];
-			arr[size - 1] = tmp;
-		}
-	}
-	else
-	{
-		for (int i = 0; i < step; i++)
-		{
-			tmp = arr[size - 1];
-			for (int j = size - 1; j >= 0; j--) arr[j] = arr[j - 1];
-			arr[0] = tmp;
-		}
+		tmp = arr[size - 1];
+		for (int j = size - 1; j >= 0; j--) arr[j] = arr[j - 1];
+		arr[0] = tmp;
 	}
 }
 
-double Array_Sum(int arr[], int size)
-{
-	int sum = 0;
-	for (int i = 1; i < size; i++) sum += arr[i];
-	return sum;
-}
-double Array_Sum(float arr[], int size)
+template<typename T1, typename T2> T1 Array_Sum(T1 arr[], T2 size)
 {
 	float sum = 0;
 	for (int i = 1; i < size; i++) sum += arr[i];
 	return sum;
 }
 
-float Array_Max(float arr[], int size)
+template<typename T1, typename T2> T1 Array_Max(T1 arr[], T2 size)
 {
 	float max = arr[0];
 	for (int i = 0; i < size; i++) if (max < arr[i]) max = arr[i];
 	return max;
 }
-int Array_Max(int arr[], int size)
-{
-	int max = arr[0];
-	for (int i = 0; i < size; i++) if (max < arr[i]) max = arr[i];
-	return max;
-}
 
-int Array_Min(int arr[], int size)
-{
-	int min = arr[0];
-	for (int i = 0; i < size; i++) if (min > arr[i]) min = arr[i];
-	return min;
-}
-float Array_Min(float arr[], int size)
+template<typename T1, typename T2> T1 Array_Min(T1 arr[], T2 size)
 {
 	float min = arr[0];
 	for (int i = 0; i < size; i++) if (min > arr[i]) min = arr[i];
