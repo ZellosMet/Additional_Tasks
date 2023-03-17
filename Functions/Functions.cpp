@@ -1,6 +1,8 @@
 ﻿#include<iostream>
 #include<ctime>
 #include<conio.h>
+
+//Список подключаемых хедеров
 #include"Fill_Array.h"
 #include"Show_Array.h"
 #include"Array_Sum.h"
