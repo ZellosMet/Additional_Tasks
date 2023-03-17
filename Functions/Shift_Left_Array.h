@@ -1,4 +1,5 @@
 #pragma once
+
 template<typename T1, typename T2, typename T3> void Shift_Left_Array(T1 arr[], T2 size, T3 step)
 {
 	float tmp = 0;

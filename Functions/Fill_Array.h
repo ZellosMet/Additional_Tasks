@@ -1,9 +1,5 @@
 #pragma once
 
-#include<iostream>
-#include<ctime>
-#include<conio.h>
-
 template<typename T1, typename T2> void Fill_Array(T1 arr[], T2 size)
 {
 	srand(time(NULL));
