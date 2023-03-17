@@ -129,6 +129,15 @@
   <ItemGroup>
     <ClCompile Include="Functions.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Array_Max.h" />
+    <ClInclude Include="Array_Min.h" />
+    <ClInclude Include="Array_Sum.h" />
+    <ClInclude Include="Fill_Array.h" />
+    <ClInclude Include="Shift_Left_Array.h" />
+    <ClInclude Include="Shift_Right_Array.h" />
+    <ClInclude Include="Show_Array.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
