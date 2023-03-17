@@ -66,10 +66,7 @@ void Fill_Array(double arr[], int size)
 
 void Fill_Array(char arr[], int size)
 {
-	for (int i = 0; i < size; i++)
-	{
-		arr[i] = 65 + rand() % 26;
-	}
+	for (int i = 0; i < size; i++) arr[i] = 65 + rand() % 26;
 }
 
 void Fill_Array(int arr[], int size, bool ur)
