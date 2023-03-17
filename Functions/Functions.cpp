@@ -1,6 +1,7 @@
 ﻿#include<iostream>
 #include<ctime>
 #include<conio.h>
+using namespace std;
 
 //Список подключаемых хедеров
 #include"Fill_Array.h"
@@ -10,7 +11,6 @@
 #include"Array_Min.h"
 #include"Shift_Left_Array.h"
 #include"Shift_Right_Array.h"
-using namespace std;
 
 /*
 Задание:	От ветки FunctionsTemplates создать ветку TemplatedFunctionsSeparation, и в ней, шаблонные функции разделить на файлы.
