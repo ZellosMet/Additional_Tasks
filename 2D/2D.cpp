@@ -7,18 +7,19 @@ using namespace std;
 			Найти определитель матрицы третьего порядка используя алгоритм Саррюса;
 */
 
-void Fill_Matrix(int arr[][3], int row, int col); //Функция заполнения матрицы
-void Show_Matrix(int arr[][3], int row, int col); // Функция вывода матрицы
-void Multip_Matrix(int f_arr[][3], int s_arr[][3], int m_arr[][3], int row, int col); // Функция перемножения матриц
-void Move_Matrix(int arr[][3], int row, int col); //Функция циклического смещения элементов матрицы
+const int ROW = 3;
+const int COL = 3;
+
+void Fill_Matrix(int arr[ROW][COL], int row, int col); //Функция заполнения матрицы
+void Show_Matrix(int arr[ROW][COL], int row, int col); // Функция вывода матрицы
+void Multip_Matrix(int f_arr[ROW][COL], int s_arr[ROW][COL], int m_arr[ROW][COL], int row, int col); // Функция перемножения матриц
+void Move_Matrix(int arr[ROW][COL], int row, int col); //Функция циклического смещения элементов матрицы
 
 void main()
 {
 	srand(time(NULL));
 	setlocale(LC_ALL, "ru");
 
-	const int ROW = 3;
-	const int COL = 3;
 	int multip_element = 1; //Переменная произведения элементов
 	long long det = 0; //Детерминант матрици
 
@@ -64,7 +65,7 @@ void main()
 
 }
 
-void Fill_Matrix(int arr[][3], int row, int col)
+void Fill_Matrix(int arr[ROW][COL], int row, int col)
 {
 	for (int i = 0; i < row; i++)
 	{
@@ -75,7 +76,7 @@ void Fill_Matrix(int arr[][3], int row, int col)
 	}
 }
 
-void Show_Matrix(int arr[][3], int row, int col)
+void Show_Matrix(int arr[ROW][COL], int row, int col)
 {
 	for (int i = 0; i < row; i++)
 	{
@@ -87,7 +88,7 @@ void Show_Matrix(int arr[][3], int row, int col)
 	}
 }
 
-void Multip_Matrix(int f_arr[][3], int s_arr[][3], int m_arr[][3], int row, int col)
+void Multip_Matrix(int f_arr[ROW][COL], int s_arr[ROW][COL], int m_arr[ROW][COL], int row, int col)
 {
 	for (int i = 0; i < row; i++)
 	{
@@ -98,7 +99,7 @@ void Multip_Matrix(int f_arr[][3], int s_arr[][3], int m_arr[][3], int row, int 
 	}
 }
 
-void Move_Matrix(int arr[][3], int row, int col)
+void Move_Matrix(int arr[ROW][COL], int row, int col)
 {
 	for (int i = 0; i < row; i++)
 	{
