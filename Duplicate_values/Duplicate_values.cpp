@@ -31,34 +31,32 @@ void main()
 
 	for (int i = 0; i < SIZE; i++) 
 	{		
-		duplic_value = count_duplic = 0;
 		duplic_check = false;
 		for (int j = i+1; j < SIZE; j++) //Цикл проверки элемента массива на повторение
 		{
-			if (array[i] == array[j] && array[i] > 0)
+			if (array[i] == array[j])
 			{ 
 				duplic_check = true; 
-				duplic_value = array[i];
 				break; 
 			}
 		}
-
-		for (int j = 0; j < SIZE; j++) // Цикл вывода повторяющихся значений
+		if (duplic_check) continue;
+		int count_duplic = 0;
+		for (int j = 0; j < i; j++) // Цикл вывода повторяющихся значений
 		{
-			if (array[j]== duplic_value)
+			if (array[i] == array[j])
 			{
-				array[j] = -array[j];
 				count_duplic++;
 			}
 		}
-		if (duplic_check) cout << "Число " << duplic_value << " повторилось " << count_duplic << " раз" << endl;
+		if (count_duplic) cout << "Число " << array[i] << " повторилось " << count_duplic << " раз" << endl;
 	}
 
 }
 
 void Fill_Array(int arr[], int size)
 {
-	for (int i = 0; i < size; i++) arr[i] = rand() % 9 +1;
+	for (int i = 0; i < size; i++) arr[i] = rand() % 5;
 }
 
 void Show_Array(int arr[], int size)
